@@ -1,0 +1,36 @@
+* {padding:0;
+margin:0;
+box-sizing: border-box;
+}
+div {width:500px;
+background-image: url(abstract-background-in-brown-and-green-tones_1095-275.jpg);
+background-size: contain;
+background-attachment: fixed;
+padding: 10px;}
+input {padding: 15px;
+margin:10px;
+border-radius: 10px;
+border: solid 2px transparent;}
+[type="number"] {display: block;
+width:425px;}
+[type="email"] {display: block;
+width:425px;}
+[type="password"] {display: block;
+width:425px;}
+[type="submit"] {display: block;
+margin:10px 165px 10px 155px;
+width:131px;
+background-color: #67B358;
+color:white;
+font-size: 15px;}
+select {padding:15px;
+border-radius: 10px;
+width:131px;
+border:2px transparent;}
+.margin1 {margin:0px 10px 0px 10px;}
+.margin2 {margin:0px 10px 0px 0px;}
+.margin3 {margin:0px 10px 0px 0px;}
+[name="firstname"] {margin:0px 10px 0px 10px;
+width: 205px;}
+[name="lastname"] {margin:0px 10px 0px 0px;
+width:205px;}
