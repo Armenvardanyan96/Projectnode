@@ -30,7 +30,7 @@ router.post("/register", (req, res) => {
     });
     res.send("Registered")
 });
-
+//LOGIN
 router.get("/login", (req, res) => {
     res.render("login.jade");
 });
