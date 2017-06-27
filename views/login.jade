@@ -1,0 +1,9 @@
+extends layout
+block content
+    h1(style='color:red') #{title}
+    p #{body}
+    div
+        form(action="login", method="POST")
+            input(name='login', placeholder='login')
+            input(name='password', placeholder='password')
+            input(type='submit', value='LOGIN')
