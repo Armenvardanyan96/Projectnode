@@ -3,7 +3,6 @@
  */
 const express = require("express");
 const router = express.Router();
-
 const mongoose = require("mongoose");
 const {userModel} = require("./mongo_models.js");
 
@@ -17,7 +16,6 @@ db.on('error', (err) => {
 db.once('open', () => {
     console.log("mongo is connected");
 });
-
 router.get("/", (req, res) => {
     res.render("index", {
         title: "Fill in to register"
@@ -60,6 +58,6 @@ router.post("/login", (req, res) => {
        }
        res.send(response);
    });
-});
 
+});
 module.exports = router;

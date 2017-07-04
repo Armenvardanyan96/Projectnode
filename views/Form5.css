@@ -10,8 +10,12 @@ padding: 10px;}
 input {padding: 15px;
 margin:10px;
 border-radius: 10px;
+<<<<<<< HEAD
 border: solid 2px transparent;
 outline: none}
+=======
+border: solid 2px transparent;}
+>>>>>>> 75c697a42962f50732af9f380bba79a0cd85fa5a
 [type="number"] {display: block;
 width:425px;}
 [type="email"] {display: block;
