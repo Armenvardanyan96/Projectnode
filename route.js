@@ -28,22 +28,38 @@ router.post("/register", (req, res) => {
     userModel.create(req.body).then(doc => {
         console.log(req.body);
     });
+
     res.send("Registered")
 });
 //LOGIN
 router.get("/login", (req, res) => {
     res.render("login.jade");
 });
+
 router.post("/login", (req, res) => {
     console.log(req.body.login);
 
    /*userModel.find({login: req.body.login}, null, {lean: true}).then(doc => {
         console.log(Object.keys(doc));
     });*/
-    userModel.find({login: req.body.login}).then(doc => {
-        console.log(doc);
-    });
-    res.send("Login Done")
+   let response = {error: 0, message: ""};
+   userModel.findOne({login: req.body.login}, null, {lean: true}).then(doc => {
+       console.log(doc);
+       if (doc) {
+           console.log(1);
+           if(doc.password==req.body.password){
+               response = doc;
+           }
+           else {
+               response.error = 1;
+               response.message = "Incorrect Password";
+           }
+       } else {
+           response.error = 1;
+           response.message = "Length Fail";
+       }
+       res.send(response);
+   });
 });
 
 module.exports = router;
