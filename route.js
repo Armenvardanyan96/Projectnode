@@ -5,6 +5,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const {userModel} = require("./mongo_models.js");
+const addProducts = require("./mongo_models.js");
 
 mongoose.connect('mongodb://localhost/Armendb');
 
@@ -16,6 +17,7 @@ db.on('error', (err) => {
 db.once('open', () => {
     console.log("mongo is connected");
 });
+
 router.get("/", (req, res) => {
     res.render("index", {
         title: "Fill in to register"
@@ -44,7 +46,6 @@ router.post("/login", (req, res) => {
    userModel.findOne({login: req.body.login}, null, {lean: true}).then(doc => {
        console.log(doc);
        if (doc) {
-           console.log(1);
            if(doc.password==req.body.password){
                response = doc;
            }
@@ -58,6 +59,24 @@ router.post("/login", (req, res) => {
        }
        res.send(response);
    });
-
 });
+
+router.post("/addProducts", (req, res) => {
+    addProducts.create(req.body)
+        .then(doc => {
+            console.log(req.body);
+            res.send("Saved")
+    })
+        .catch(err => {
+            res.send("error:" + err)
+    });
+});
+
+router.get("/products", (req, res) => {
+    addProducts.find({type: req.query.type}, null, {lean: true})
+        .then(doc => {
+            res.send(doc);
+        })
+});
+
 module.exports = router;
