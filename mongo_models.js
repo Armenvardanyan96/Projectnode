@@ -18,8 +18,26 @@ const productsSchema = new Schema({
     os: {type: Array}
 });
 
+const newsSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    description: String,
+    date: {
+        type: Number,
+    },
+    tags: Array
+    });
 const userModel = mongoose.model('Users', usersSchema, "users");
 
-const addProducts = mongoose.model("Products", productsSchema, "products")
+const addProducts = mongoose.model("Products", productsSchema, "products");
+
+const newsModel = mongoose.model("News", newsSchema, "news");
 module.exports = {userModel};
 module.exports = addProducts;
+module.exports = newsModel;

@@ -6,8 +6,11 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const {userModel} = require("./mongo_models.js");
 const addProducts = require("./mongo_models.js");
+const newsModel = require("./mongo_models.js");
+const moment = require("moment");
 
-mongoose.connect('mongodb://localhost/Armendb');
+
+mongoose.connect('mongodb://localhost/node');
 
 const db = mongoose.connection;
 
@@ -61,6 +64,8 @@ router.post("/login", (req, res) => {
    });
 });
 
+
+
 router.post("/addProducts", (req, res) => {
     addProducts.create(req.body)
         .then(doc => {
@@ -79,4 +84,19 @@ router.get("/products", (req, res) => {
         })
 });
 
+router.post("/add/news", (req, res) => {
+    let newsObj = req.body;
+    if(newsObj){
+        //newsObj.date = new Date();
+        newsObj.date = moment().format("X");
+        newsModel.create(newsObj)
+            .then(doc => {
+                console.log(newsObj);
+                res.send("Saved")
+            })
+            .catch(err => {
+                res.send("error:" + err)
+            });
+    };
+});
 module.exports = router;
