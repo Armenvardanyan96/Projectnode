@@ -84,6 +84,8 @@ router.get("/products", (req, res) => {
         })
 });
 
+
+
 router.post("/add/news", (req, res) => {
     let newsObj = req.body;
     if(newsObj){
@@ -97,6 +99,11 @@ router.post("/add/news", (req, res) => {
             .catch(err => {
                 res.send("error:" + err)
             });
-    };
+    }
+});
+
+router.get("/add/news", (req, res) => {
+    newsModel.find({}, null,  {sort : {date : -1}, lean: true, limit: 1})
+        .then(doc => res.send(doc));
 });
 module.exports = router;
