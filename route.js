@@ -10,7 +10,7 @@ const newsModel = require("./mongo_models.js");
 const moment = require("moment");
 
 
-mongoose.connect('mongodb://localhost/node');
+mongoose.connect('mongodb://admin:admin@ds013014.mlab.com:13014/heroku_34tl15pd');
 
 const db = mongoose.connection;
 
